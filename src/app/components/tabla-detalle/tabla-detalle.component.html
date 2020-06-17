@@ -1,0 +1,68 @@
+<section>
+  <div class="container mt-5">
+    <div class="row mb-4">
+      <div class="col-xs-12 col-sm-8 col-md-10">
+        <h2>Detalles</h2>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-2">
+        <button
+          type="button"
+          class="btn btn-primary float-right ml-3 btn-block"
+          data-toggle="modal"
+          data-target="#modalDetalle"
+        >
+          Add detail
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Articulo</th>
+
+              <th scope="col">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detalle of detallesHijo; i as index">
+              <th scope="row">{{ detalle.id }}</th>
+              <td>{{ detalle.cantidad }}</td>
+              <td>{{ detalle.articulo }}</td>
+              <td>
+                <div *ngIf="detalle.id != null">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#modalDetalle"
+                    (click)="onPreUpdate(detalle)"
+                  >
+                    Actualizar
+                  </button>
+                </div>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="delete(detalle)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-form
+  (emitirDetalle)="emitirDetalleAlPadre($event)"
+  [detalleDelHijo]="detalleDelPadre"
+></app-form>

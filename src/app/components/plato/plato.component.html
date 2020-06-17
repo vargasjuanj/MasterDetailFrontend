@@ -1,0 +1,89 @@
+<form #form="ngForm" (submit)="submit(form)">
+  <input name="id" [(ngModel)]="plato.id" />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Denominación</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">#</div>
+          </div>
+          <input
+            name="denominacion"
+            placeholder="Denominación"
+            [(ngModel)]="plato.denominacion"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Tiempo de Preparación</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">#</div>
+          </div>
+          <input
+            name="tiempoPreparacion"
+            placeholder="Tiempo"
+            [(ngModel)]="plato.tiempoPreparacion"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Precio de Venta</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">#</div>
+          </div>
+          <input
+            name="precioVenta"
+            placeholder="Precio"
+            [(ngModel)]="plato.precioVenta"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Imagen</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">#</div>
+          </div>
+          <input
+            name="imagen"
+            placeholder="Url"
+            [(ngModel)]="plato.imagen"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <app-tabla-detalle
+    (emitirDetalle)="agregarDetalle($event)"
+    [detallesHijo]="plato.detallePlato"
+  ></app-tabla-detalle>
+
+  <br />
+  <hr />
+  <br />
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark">
+      <i class="fa fa-database"></i> Guardar Plato
+    </button>
+    <a class="btn btn-outline-dark ml-1" routerLink="/tabla"
+      ><i class="fa fa-table"></i> Ver Platos</a
+    >
+  </div>
+</form>
