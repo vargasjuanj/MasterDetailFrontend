@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <thead class="thead-light">
+    <th>#</th>
+    <th>Denominación</th>
+    <th>Tiempo de Preparación</th>
+    <th>Precio de Venta</th>
+    <th>
+      <a class="btn btn-outline-success" routerLink="/plato/0">
+        +Agregar Plato</a
+      >
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let plato of platos">
+      <th (click)="update(plato.id)">{{ plato.id }}</th>
+      <td (click)="update(plato.id)">{{ plato.denominacion }}</td>
+      <td (click)="update(plato.id)">{{ plato.tiempoPreparacion }}</td>
+      <td (click)="update(plato.id)">{{ plato.precioVenta }}</td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="delete(plato.id)">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
